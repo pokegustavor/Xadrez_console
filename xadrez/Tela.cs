@@ -26,6 +26,7 @@ namespace xadrez
             {
                 Console.WriteLine("XEQUEMATE!");
                 Console.WriteLine("Vencedor: " + partida.JogadorAtual);
+                Console.WriteLine("Pressione ENTER para finalizar o programa");
             }
         }
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
