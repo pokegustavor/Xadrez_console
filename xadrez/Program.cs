@@ -1,15 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using tabuleiro;
 namespace xadrez
 {
     class Program
     {
         static void Main(string[] args)
         {
+            try
+            {
+                Tabuleiro tab = new Tabuleiro(8, 8);
+
+
+
+
+
+
+
+
+
+
+            }
+            catch(TabuleiroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
