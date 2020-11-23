@@ -141,6 +141,49 @@ namespace xadrez
                 DesfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
             }
+            Peca p = Tab.peca(destino);
+
+            // #jogadaespecial promocao
+
+            if(p is Peao)
+            {
+                if((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7))
+                {
+                    p = Tab.RetirarPeca(destino);
+                    Pecas.Remove(p);
+                    Console.WriteLine();
+                    Console.Write("Escolha entre Bispo, Cavalo, Dama e Torre (B/C/D/T): ");
+                    Char pecaescolhida = char.Parse(Console.ReadLine());
+                    if(pecaescolhida == 'B')
+                    {
+                        Peca peca = new Bispo(Tab, p.Cor);
+                        Tab.ColocarPeca(peca, destino);
+                        Pecas.Add(peca);
+                    }
+                    else if (pecaescolhida == 'C')
+                    {
+                        Peca peca = new Cavalo(Tab, p.Cor);
+                        Tab.ColocarPeca(peca, destino);
+                        Pecas.Add(peca);
+                    }
+                    else if (pecaescolhida == 'D')
+                    {
+                        Peca peca = new Dama(Tab, p.Cor);
+                        Tab.ColocarPeca(peca, destino);
+                        Pecas.Add(peca);
+                    }
+                    else if (pecaescolhida == 'T')
+                    {
+                        Peca peca = new Torre(Tab, p.Cor);
+                        Tab.ColocarPeca(peca, destino);
+                        Pecas.Add(peca);
+                    }
+                    else
+                    {
+                        throw new TabuleiroException("Peça inválida!");
+                    }
+                }
+            }
 
             if (EstaEmXeque(Adversaria(JogadorAtual)))
             {
@@ -159,7 +202,7 @@ namespace xadrez
                 Turno++;
                 MudaJogador();
             }
-            Peca p = Tab.peca(destino);
+            
 
             //#Jogadaespecial en passant
             if(p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2))
