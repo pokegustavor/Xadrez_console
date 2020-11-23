@@ -15,6 +15,10 @@ namespace xadrez
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.Turno);
             Console.WriteLine("Arguardando jogada: " + partida.JogadorAtual);
+            if (partida.Xeque)
+            {
+                Console.WriteLine("XEQUE!");
+            }
         }
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
         {
@@ -57,7 +61,7 @@ namespace xadrez
         public static PosicaoXadrez LerPosicaoXadrez()
         {
             string s = Console.ReadLine();
-            if(s.Length > 2 || string.IsNullOrEmpty(s) || s[0] == ' ')
+            if(s.Length > 2 || string.IsNullOrEmpty(s) || s[0] == ' ' || s[0] > 'h' )
             {
                 throw new TabuleiroException("Posição inválida!");
             }

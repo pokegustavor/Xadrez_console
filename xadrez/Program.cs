@@ -49,6 +49,12 @@ namespace xadrez
                         Console.WriteLine("Pressione ENTER para continuar");
                         Console.ReadLine();
                     }
+                    catch (SystemException)
+                    {
+                        Console.WriteLine("Erro inesperado! Tente novamente");
+                        Console.WriteLine("Pressione ENTER para continuar");
+                        Console.ReadLine();
+                    }
                 }
 
 
