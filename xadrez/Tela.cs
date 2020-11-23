@@ -23,7 +23,15 @@ namespace xadrez
         public static PosicaoXadrez LerPosicaoXadrez()
         {
             string s = Console.ReadLine();
+            if(s.Length > 2)
+            {
+                throw new TabuleiroException("Posição inválida!");
+            }
             char coluna = s[0];
+            if (Char.IsUpper(coluna))
+            {
+                throw new TabuleiroException("Use apenas letras minúsculas!");
+            }
             int linha = int.Parse(s[1] + "");
             return new PosicaoXadrez(coluna, linha);
         }
